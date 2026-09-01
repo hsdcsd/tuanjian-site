@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>团建资源库</title>
+  <style>
+    *{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:#f5f7fb;color:#1f2937}
+    header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.86);backdrop-filter:blur(16px);border-bottom:1px solid #e5e7eb}
+    .nav{max-width:1180px;margin:auto;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:20px}.logo{width:38px;height:38px;border-radius:14px;object-fit:cover;display:block;box-shadow:0 10px 25px rgba(75,95,255,.25)}
+    .tabs{display:flex;gap:8px;flex-wrap:wrap}.tab{border:0;background:#eef2ff;color:#485069;padding:10px 15px;border-radius:999px;cursor:pointer;font-weight:800}.tab.active{background:#4f46e5;color:#fff}
+    .hero{max-width:1180px;margin:28px auto 18px;padding:34px 22px 18px}.hero-card{border-radius:30px;padding:38px;background:radial-gradient(circle at 15% 20%,#d7f7ff,transparent 28%),radial-gradient(circle at 85% 5%,#efe4ff,transparent 32%),linear-gradient(135deg,#ffffff,#eef4ff);box-shadow:0 20px 60px rgba(47,70,120,.12);overflow:hidden;position:relative}
+    h1{font-size:44px;line-height:1.12;margin:0 0 12px}.sub{font-size:17px;color:#64748b;max-width:720px;line-height:1.7}.actions{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}.btn{border:0;border-radius:14px;padding:13px 18px;font-weight:900;cursor:pointer;transition:.2s}.btn:hover{transform:translateY(-1px)}.primary{background:#4f46e5;color:#fff}.ghost{background:#fff;color:#4f46e5;border:1px solid #dbe1ff}.dark{background:#111827;color:#fff}.soft{background:#eef2ff;color:#4338ca}
+    main{max-width:1180px;margin:auto;padding:0 22px 50px}.section-title{display:flex;align-items:end;justify-content:space-between;margin:28px 0 16px}h2{margin:0;font-size:26px}.muted{color:#64748b}.mini{font-size:12px;color:#64748b}
+    .filters{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 20px}.chip{border:1px solid #d9e0ef;background:#fff;color:#536074;border-radius:999px;padding:9px 14px;cursor:pointer;font-weight:800}.chip.active{background:#111827;color:#fff;border-color:#111827}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:#fff;border:1px solid #e7ebf3;border-radius:22px;overflow:hidden;box-shadow:0 12px 30px rgba(30,41,59,.06);cursor:pointer;transition:.25s;position:relative}.card:hover{transform:translateY(-4px);box-shadow:0 20px 38px rgba(30,41,59,.1)}
+    .cover{height:154px;background:linear-gradient(135deg,var(--a),var(--b));position:relative;overflow:hidden}.cover img{width:100%;height:100%;object-fit:cover;display:block}.cover:after{content:'';position:absolute;right:18px;top:18px;width:86px;height:86px;border-radius:28px;background:rgba(255,255,255,.22);transform:rotate(18deg)}.icon{position:absolute;left:20px;bottom:18px;font-size:42px}.tag{position:absolute;right:16px;bottom:18px;background:rgba(255,255,255,.9);padding:7px 11px;border-radius:999px;font-weight:900;font-size:13px}.fav{position:absolute;top:14px;right:14px;z-index:2;border:0;border-radius:999px;background:rgba(255,255,255,.92);width:38px;height:38px;cursor:pointer;font-size:18px}.fav.on{color:#ef4444}
+    .body{padding:18px}.body h3{margin:0 0 10px;font-size:19px}.desc{color:#64748b;line-height:1.6;font-size:14px;min-height:44px}.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.pill{background:#f1f5f9;color:#475569;border-radius:999px;padding:6px 9px;font-size:12px;font-weight:800}.rating{color:#f59e0b;font-weight:900}
+    .panel{display:none}.panel.active{display:block}.form{background:#fff;border:1px solid #e6ebf2;border-radius:24px;padding:22px;box-shadow:0 14px 35px rgba(30,41,59,.06)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}label{font-weight:900;font-size:14px}input,select,textarea{width:100%;margin-top:7px;border:1px solid #d9e0ea;border-radius:14px;padding:12px 13px;font:inherit;background:#fbfdff}textarea{min-height:110px;resize:vertical}.full{grid-column:1/-1}
+    .modal{position:fixed;inset:0;background:rgba(15,23,42,.52);display:none;align-items:center;justify-content:center;padding:18px;z-index:50}.modal.show{display:flex}.dialog{background:#fff;border-radius:26px;max-width:850px;width:100%;overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,.25);max-height:92vh;overflow-y:auto}.dialog-cover{height:230px;background:linear-gradient(135deg,#eef2ff,#f0fdff);position:relative}.dialog-cover img{width:100%;height:100%;object-fit:cover}.dialog-head{padding:22px 24px;display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid #eef2f7}.close{border:0;background:#111827;color:#fff;width:36px;height:36px;border-radius:12px;cursor:pointer}.dialog-body{padding:24px;line-height:1.7}.detail-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}.detail-item{background:#f8fafc;border-radius:16px;padding:12px}.detail-item b{display:block;color:#334155}.empty{padding:28px;text-align:center;color:#64748b;background:#fff;border-radius:20px;border:1px dashed #cbd5e1}.launch-box{margin-top:18px;padding:18px;border-radius:20px;background:#f8fafc;border:1px solid #e2e8f0}.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:#111827;color:#fff;padding:12px 18px;border-radius:999px;display:none;z-index:80}.toast.show{display:block}.row{display:flex;gap:10px;flex-wrap:wrap}.row>*{flex:1;min-width:160px}
+    .car-btn{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.88);color:#111827;font-size:24px;line-height:1;cursor:pointer;z-index:3;box-shadow:0 4px 14px rgba(0,0,0,.2);display:grid;place-items:center}.car-btn.left{left:14px}.car-btn.right{right:14px}.car-btn:hover{background:#fff}.car-ind{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);background:rgba(17,24,39,.62);color:#fff;font-size:12px;font-weight:800;padding:5px 13px;border-radius:999px;z-index:3;letter-spacing:.5px}
+    .photo-thumbs{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.ph{position:relative;width:74px;height:74px;border-radius:12px;overflow:hidden;border:1px solid #e5e7eb;cursor:pointer}.ph img{width:100%;height:100%;object-fit:cover;display:block}.ph button{position:absolute;top:2px;right:2px;border:0;background:rgba(239,68,68,.92);color:#fff;width:20px;height:20px;border-radius:50%;cursor:pointer;font-size:13px;line-height:1}.ph .cover-badge{position:absolute;left:2px;bottom:2px;background:rgba(79,70,229,.92);color:#fff;font-size:10px;font-weight:800;padding:2px 6px;border-radius:6px;pointer-events:none}
+    .upload-zone{border:2px dashed #c3cbe8;border-radius:16px;padding:22px;text-align:center;color:#64748b;cursor:pointer;background:#f8faff;margin-top:7px;transition:.2s}.upload-zone.drag{border-color:#4f46e5;background:#eef2ff}.uz-text{font-size:14px;font-weight:800}.uz-text small{display:block;font-weight:500;margin-top:4px;color:#94a3b8}
+    .vote-banner{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:20px;padding:16px 20px;border-radius:20px;background:linear-gradient(135deg,#eef2ff,#e6f4ff);border:1px solid #dfe6ff;cursor:pointer;transition:.2s}.vote-banner:hover{border-color:#c7d2fe;transform:translateY(-1px)}.vb-left{display:flex;align-items:center;gap:12px}.vb-icon{width:46px;height:46px;border-radius:14px;background:#fff;display:grid;place-items:center;font-size:24px;box-shadow:0 6px 16px rgba(79,70,229,.15)}.vb-left b{font-size:17px;display:block}
+    .v-pick{margin-bottom:16px}.v-picklist{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-height:210px;overflow-y:auto;margin-top:8px}.v-item{display:flex;align-items:center;gap:8px;border:1px solid #e5e7eb;border-radius:12px;padding:8px 10px;cursor:pointer;background:#fff}.v-item.on{border-color:#4f46e5;background:#eef2ff}.v-item img{width:42px;height:42px;border-radius:8px;object-fit:cover}.v-item .vi-name{font-weight:800;font-size:13px}.v-item .vi-meta{font-size:11px;color:#64748b}.v-item .vi-tick{margin-left:auto;color:#4f46e5;font-weight:900}
+    .v-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px;max-height:340px;overflow-y:auto}.v-card{position:relative;border:1px solid #e7ebf3;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 8px 20px rgba(30,41,59,.06)}.v-card .vc-cover{height:120px}.v-card .vc-cover img{width:100%;height:100%;object-fit:cover}.v-card .vc-body{padding:12px}.v-card .vc-body h4{margin:0 0 6px;font-size:15px}.v-card .vc-rm{position:absolute;top:8px;right:8px;z-index:2;border:0;border-radius:999px;background:rgba(239,68,68,.92);color:#fff;width:26px;height:26px;cursor:pointer;font-size:15px;line-height:1}.vc-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 10px;font-size:12px;color:#475569;margin-top:6px}.vc-grid b{color:#334155}
+    .v-preview{margin-top:16px;background:#0f172a;color:#e2e8f0;border-radius:14px;padding:14px;font-size:12px;white-space:pre-wrap;max-height:220px;overflow-y:auto}
+    .v-hint{font-size:12px;color:#94a3b8;margin-top:4px}
+    .vp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px;max-height:70vh;overflow-y:auto}
+    .vp-card{border:1px solid #e7ebf3;border-radius:18px;overflow:hidden;background:#fff}
+    .vp-cover{height:200px;background:linear-gradient(135deg,#eef2ff,#e0e7ff);display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .vp-cover img{width:100%;height:100%;object-fit:cover}
+    .vp-noimg{font-size:44px;opacity:.5}
+    .vp-body{padding:14px}
+    .vp-body h4{margin:0 0 6px;font-size:16px;color:#0f172a}
+    .vp-meta{font-size:12px;color:#6366f1;margin-bottom:8px}
+    .vp-desc{font-size:12px;color:#475569;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+    .vp-sub{font-size:12px;color:#94a3b8}
+    @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}h1{font-size:34px}.form-grid{grid-template-columns:1fr}.detail-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:580px){.nav{align-items:flex-start;flex-direction:column}.grid{grid-template-columns:1fr}.hero-card{padding:26px}.actions .btn{width:100%}.detail-grid{grid-template-columns:1fr}.dialog-cover{height:170px}}
+  </style>
+</head>
+<body>
+  <header><div class="nav"><div class="brand"><img class="logo" src="appicon_b_purple.jpg" alt="团建资源库">团建资源库</div><div class="tabs"><button class="tab active" data-page="home">首页推荐</button><button class="tab" data-page="library">团建库</button><button class="tab" data-page="favorites">我的收藏</button><button class="tab" data-page="add">添加项目</button></div></div></header>
+  <section class="hero"><div class="hero-card"><h1>发现、收藏并发起<br>团队喜欢的团建项目</h1><p class="sub">首页展示推荐项目，团建库按类型查看项目卡片。点击卡片可查看项目名称、介绍、费用、类型、活动图片、人数和评价，并支持收藏、发起项目和短信通知对方。</p><div class="actions"><button class="btn primary" onclick="switchPage('library')">浏览团建库</button><button class="btn ghost" onclick="openAdd()">添加团建项目</button></div><div class="vote-banner" onclick="openVote()"><div class="vb-left"><span class="vb-icon">🗳️</span><div><b>发起团建投票</b><div class="mini">从团建库挑选多个项目，一键生成投票并发送到飞书群，让团队选最想去的团建</div></div></div><span class="btn primary" style="pointer-events:none;flex-shrink:0">发起投票</span></div></div></section>
+  <main>
+    <section id="home" class="panel active"><div class="section-title"><div><h2>推荐团建项目</h2><div class="muted">根据你在团建库浏览过的、收藏过的和最近添加的项目动态推荐</div></div></div><div class="grid" id="recommendGrid"></div></section>
+    <section id="library" class="panel"><div class="section-title"><div><h2>团建库</h2><div class="muted">选择类型查看不同团建项目卡片</div></div></div><div class="filters" id="filters"></div><div class="grid" id="libraryGrid"></div></section>
+    <section id="favorites" class="panel"><div class="section-title"><div><h2>我的收藏</h2><div class="muted">你收藏的团队项目会保存在本地浏览器</div></div></div><div class="grid" id="favGrid"></div></section>
+  </main>
+  <div class="modal" id="modal"><div class="dialog"><div class="dialog-cover" id="dCover"></div><div class="dialog-head"><div><h2 id="dName"></h2><div class="muted" id="dType"></div></div><button class="close" onclick="closeModal()">×</button></div><div class="dialog-body"><p id="dDesc"></p><div class="detail-grid" id="dFields"></div><div class="actions"><button class="btn soft" id="favBtn"></button><button class="btn ghost" onclick="openEdit()">✏️ 编辑字段</button><button class="btn primary" onclick="showLaunch()">发起项目</button><button class="btn" style="background:#fee2e2;color:#dc2626" onclick="deleteProject()">🗑️ 删除项目</button></div><div class="launch-box" id="launchBox" style="display:none"><h3 style="margin-top:0">发起项目并短信通知</h3><div class="row"><label>对方手机号<input id="phone" placeholder="例如：13800000000"></label><label>活动日期<input id="date" type="date"></label></div><label>短信内容<textarea id="smsText"></textarea></label><div class="actions"><button class="btn primary" onclick="sendSms()">发送短信通知</button><button class="btn ghost" onclick="launchBox.style.display='none'">取消</button></div><div class="mini">说明：纯 HTML 页面无法直接调用短信服务，点击后会调起手机/电脑默认短信应用；如需真实群发短信，可后续接入短信平台 API。</div></div></div></div></div>
+  <div class="modal" id="addModal"><div class="dialog"><div class="dialog-head"><div><h2>添加团建项目</h2><div class="muted">填写后会立即出现在团建库中，建议尽量补齐所有字段</div></div><button class="close" onclick="closeAdd()">×</button></div><div class="dialog-body"><form class="form" id="projectForm" style="border:0;box-shadow:none;padding:0"><div class="form-grid"><div><label>项目名称 *<input required id="name" placeholder="例如：城市定向挑战赛"></label></div><div><label>项目类型 *<select id="type"><option>户外挑战</option><option>室内创意</option><option>轻松休闲</option><option>培训共创</option><option>公益实践</option></select></label></div><div><label>适合人数 *<input required id="people" placeholder="例如：10-50人"></label></div><div><label>项目介绍 *<textarea required id="desc" placeholder="写下项目玩法、亮点、适合团队等"></textarea></label></div><div><label>项目费用<input id="budget" placeholder="例如：¥150-300/人"></label></div><div><label>项目评分<select id="rating"><option value="5">★★★★★ 5.0</option><option value="4.8">★★★★☆ 4.8</option><option value="4.5">★★★★☆ 4.5</option><option value="4.2">★★★★☆ 4.2</option></select></label></div><div><label>标签（level）<input id="level" placeholder="例如：热门推荐 / 高性价比"></label></div><div class="full"><label>活动图片（支持多张，第一张为封面）</label><div class="upload-zone" id="uploadZone" onclick="document.getElementById('photos').click()"><span class="uz-text">📷 点击或拖拽图片到这里<small>支持多张，封面自动取第一张；点击缩略图可调整封面顺序</small></span></div><input id="photos" type="file" accept="image/*" multiple style="display:none" onchange="previewPhotos()"><div class="photo-thumbs" id="photoThumbs"></div></div><div><label>emoji 图标<input id="icon" placeholder="例如：🎉（留空自动用 ✨）"></label></div><div><label>团建地点<input id="place" placeholder="例如：城市核心区 / 湖畔营地"></label></div><div><label>建议时长<input id="duration" placeholder="例如：半天（4 小时） / 1-2 天"></label></div><div><label>餐饮方案<input id="catering" placeholder="例如：烧烤自助 / 茶歇轻食"></label></div><div><label>额外费用说明<input id="extraFee" placeholder="例如：装备租赁费另计"></label></div><div><label>风险提示<input id="risk" placeholder="例如：户外注意防晒补水"></label></div><div class="full actions"><button class="btn primary" type="submit">保存项目</button><button class="btn ghost" type="button" onclick="closeAdd()">取消</button></div></div></form></div></div></div>
+  <div class="modal" id="voteModal"><div class="dialog"><div class="dialog-head"><div><h2>发起团建投票</h2><div class="muted">从团建库选择多个项目，生成投票发送到飞书群</div></div><button class="close" onclick="closeVote()">×</button></div><div class="dialog-body"><div class="v-pick"><b>① 从团建库添加项目（可多选）</b><input id="voteSearch" placeholder="🔍 搜索项目名称..." oninput="renderVotePick()" style="margin-top:8px"><div class="v-picklist" id="votePickList"></div></div><div class="v-pick"><b>② 已选项目</b><div class="v-cards" id="voteCards"></div></div><div class="v-pick"><b>③ 发送到飞书群</b><div class="row" style="margin-top:8px"><label>群机器人 Webhook<input id="voteWebhook" placeholder="https://open.feishu.cn/open-apis/bot/v2/hook/..."></label></div><label>投票内详情页链接<input id="voteLink"></label><div class="v-hint">Webhook 填法：在飞书目标群里添加「自定义机器人」→ 复制 Webhook 地址粘贴到这里；投票将以卡片消息发送到该群，卡片底部含「查看项目详情」链接。</div><div class="actions" style="margin-top:14px"><button class="btn primary" onclick="sendVote()">🚀 开始投票</button><button class="btn ghost" onclick="copyVote()">📋 复制投票内容</button><button class="btn ghost" onclick="copyVoteOptions()">🗳️ 复制为飞书投票选项</button></div><div class="v-preview" id="votePreview" style="display:none"></div></div></div></div><div class="modal" id="votePreviewModal"><div class="dialog"><div class="dialog-head"><div><h2>🗳️ 团建投票 · 项目预览</h2><div class="muted">本次投票的全部候选项目，点击右上角 × 关闭</div></div><button class="close" onclick="closeVotePreview()">×</button></div><div class="dialog-body"><div class="vp-grid" id="votePreviewGrid"></div></div></div></div>
+  <div class="modal" id="editModal"><div class="dialog"><div class="dialog-head"><div><h2>编辑项目字段</h2><div class="muted">可手动补充或修改字段信息，保存后立即生效</div></div><button class="close" onclick="closeEdit()">×</button></div><div class="dialog-body"><form id="editForm" class="form" style="border:0;box-shadow:none;padding:0"><div class="form-grid"><div><label>项目名称<input id="eName"></label></div><div><label>项目类型<select id="eType"><option>户外挑战</option><option>室内创意</option><option>轻松休闲</option><option>培训共创</option><option>公益实践</option></select></label></div><div><label>适合人数<input id="ePeople"></label></div><div><label>项目介绍<textarea id="eDesc"></textarea></label></div><div><label>项目费用<input id="eBudget"></label></div><div><label>项目评分<select id="eRating"><option value="5">★★★★★ 5.0</option><option value="4.8">★★★★☆ 4.8</option><option value="4.5">★★★★☆ 4.5</option><option value="4.2">★★★★☆ 4.2</option></select></label></div><div><label>标签（level）<input id="eLevel"></label></div><div class="full"><label>活动图片（支持多张，第一张为封面）</label><div class="upload-zone" id="eUploadZone" onclick="document.getElementById('ePhotos').click()"><span class="uz-text">📷 点击或拖拽图片到这里<small>支持多张，封面自动取第一张；点击缩略图可调整封面顺序</small></span></div><input id="ePhotos" type="file" accept="image/*" multiple style="display:none" onchange="previewEditPhotos()"><div class="photo-thumbs" id="ePhotoThumbs"></div></div><div><label>emoji 图标<input id="eIcon"></label></div><div><label>团建地点<input id="eLocation"></label></div><div><label>建议时长<input id="eDuration"></label></div><div><label>餐饮方案<input id="eCatering"></label></div><div><label>额外费用说明<input id="eExtraFee"></label></div><div><label>风险提示<input id="eRisk"></label></div><div class="full actions"><button class="btn primary" type="submit">保存修改</button><button class="btn ghost" type="button" onclick="closeEdit()">取消</button></div></div></form></div></div></div>
+  <div class="toast" id="toast"></div>
+  <script>
+    const colors=[['#7c3aed','#38bdf8'],['#06b6d4','#22c55e'],['#f97316','#facc15'],['#6366f1','#a78bfa'],['#14b8a6','#60a5fa'],['#ec4899','#8b5cf6']];
+    const defaults=[
+      {id:1,name:'城市定向挑战赛',type:'户外挑战',people:'20-80人',budget:'¥180-350/人',rating:'4.9',level:'热门推荐',icon:'🧭',image:'images/city_challenge.jpg',location:'城市核心区（地标沿线）',duration:'半天（4-5 小时）',catering:'能量补给包 + 简餐',extraFee:'如需专业摄影/航拍另计',risk:'户外活动注意防晒补水，运动量较大',desc:'团队分组完成城市探索、线索解谜与任务打卡，适合快速破冰、提升协作和团队凝聚力。'},
+      {id:2,name:'AI创意工作坊',type:'培训共创',people:'8-40人',budget:'¥200-500/人',rating:'5.0',level:'深度体验',icon:'🤖',image:'images/ai_workshop.jpg',location:'公司会议室 / 共享创意空间',duration:'半天（4 小时）',catering:'茶歇 + 轻食',extraFee:'AI 工具授权费用另计',risk:'需提前确认网络与账号权限',desc:'结合AI工具完成海报、短片或产品创意共创，适合创新团队、设计团队和跨部门协作。'},
+      {id:3,name:'飞盘嘉年华',type:'轻松休闲',people:'12-60人',budget:'¥100-220/人',rating:'4.8',level:'高性价比',icon:'🥏',image:'images/frisbee.jpg',location:'户外草地 / 城市公园',duration:'3-4 小时',catering:'野餐 / 简餐',extraFee:'场地租赁费另计',risk:'轻运动，注意热身避免拉伤',desc:'规则简单、运动强度适中，搭配趣味赛制，适合年轻团队和轻量户外团建。'},
+      {id:4,name:'密室协作解谜',type:'室内创意',people:'6-30人',budget:'¥120-260/人',rating:'4.7',level:'热门推荐',icon:'🔐',image:'images/escape_room.jpg',location:'密室主题馆（市内）',duration:'2-3 小时',catering:'馆内不含餐饮，可自行安排',extraFee:'部分主题额外收费',risk:'幽闭空间，恐高/密闭恐惧者慎选',desc:'通过角色分工、线索推理和限时任务强化沟通效率，适合小团队深度互动。'},
+      {id:5,name:'公益环保行动',type:'公益实践',people:'10-100人',budget:'¥80-200/人',rating:'4.9',level:'深度体验',icon:'🌱',image:'images/eco_action.jpg',location:'社区 / 公园 / 海岸',duration:'半天（4 小时）',catering:'简餐 / 志愿者餐',extraFee:'捐赠物资费用另计',risk:'户外注意防晒，清理现场注意安全',desc:'组织净滩、社区服务或环保创作，将团队协作与企业社会责任结合。'},
+      {id:6,name:'团队即兴戏剧',type:'室内创意',people:'10-35人',budget:'¥180-380/人',rating:'4.6',level:'轻量快闪',icon:'🎭',image:'images/improv_theater.jpg',location:'排练室 / 多功能厅',duration:'3-4 小时',catering:'茶歇',extraFee:'如需专业导演/剧场另计',risk:'无特殊风险，放开参与即可',desc:'通过即兴表达、情景演绎和角色互换，提升团队表达力、信任感和创造力。'}
+    ];
+    let projects=JSON.parse(localStorage.getItem('teamProjectsV2')||'null')||defaults;
+    let favorites=JSON.parse(localStorage.getItem('teamFavs')||'[]');
+    // —— 浏览记录 / 收藏时间（供首页个性化推荐使用）——
+    let previews=JSON.parse(localStorage.getItem('teamPreviews')||'{}');
+    let favTimes=JSON.parse(localStorage.getItem('teamFavTimes')||'{}');
+    let newPhotoList=[];let detailPhotos=[],photoIdx=0;
+    // —— 场地实拍封面：把 4 张图片挂到对应团建项目卡片封面上；若没有对应项目则自动新增卡片 ——
+    const VENUES=[
+      {name:'乐游园',type:'轻松休闲',people:'15-60人',budget:'¥120-260/人',rating:'4.8',level:'自然休闲',icon:'🌿',image:'images/leyouyuan.jpg',location:'乐游园（城市近郊）',duration:'半天-全天',catering:'庭院下午茶 / 烧烤可选',extraFee:'遮阳棚、桌椅套餐费用',risk:'户外注意防晒，雨天改期',desc:'庭院草坪、遮阳伞与木质平台，适合围坐聊天、轻量游戏与团队下午茶，节奏舒缓不折腾。'},
+      {name:'落雁岛湖畔营地',type:'轻松休闲',people:'20-80人',budget:'¥150-300/人',rating:'4.9',level:'露营首选',icon:'🏕️',image:'images/luoyandao.jpg',location:'落雁岛湖畔营地',duration:'1-2 天（可过夜）',catering:'露营烧烤 + 篝火晚会',extraFee:'帐篷 / 露营装备租赁费',risk:'湖边注意安全，夜间注意防蚊',desc:'湖畔营地、篝火与晚霞，露营烧烤、围炉夜话一站式，适合慢节奏的团队放松与情感联结。'},
+      {name:'Party Day 运动超乐场',type:'室内创意',people:'10-50人',budget:'¥180-350/人',rating:'4.7',level:'室内派对',icon:'🎳',image:'images/partyday.jpg',location:'Party Day 运动超乐场（室内）',duration:'2-3 小时',catering:'馆内餐吧 / 轻食',extraFee:'保龄球局数超出另计',risk:'运动注意热身，建议穿防滑鞋',desc:'保龄球、霓虹运动馆与派对氛围，室内动感玩法，天气不好也能嗨，适合年轻团队与跨部门破冰。'},
+      {name:'东篱老屋团建基地',type:'户外挑战',people:'30-150人',budget:'¥200-400/人',rating:'4.9',level:'综合基地',icon:'🏞️',image:'images/dongli.jpg',location:'东篱老屋团建基地',duration:'1-2 天',catering:'烧烤自助 + 农家餐',extraFee:'水上项目 / 越野车等单项另计',risk:'水上项目需穿救生衣，注意安全',desc:'覆盖露营、越野车、水上项目、真人CS、卡丁车等多元玩法的大型综合基地，适合全员规模大团建。'}
+    ];
+    const VENUE_KEYS=[['乐游园'],['落雁','洛雁'],['party','Party','运动超乐场'],['东篱老屋']];
+    (function(){
+      var changed=false;
+      VENUES.forEach(function(v,i){
+        var matched=false;
+        projects.forEach(function(p){
+          if(matched)return;
+          var nm=p.name||'';
+          var hit=false;
+          VENUE_KEYS[i].forEach(function(k){ if(nm.indexOf(k)!==-1)hit=true; });
+          if(hit){ matched=true; if(p.image!==v.image){p.image=v.image;changed=true;} }
+        });
+        if(!matched){
+          projects.push({id:Date.now()+Math.floor(Math.random()*999),name:v.name,type:v.type,people:v.people,budget:v.budget,rating:v.rating,level:v.level,icon:v.icon,image:v.image,location:v.location,duration:v.duration,catering:v.catering,extraFee:v.extraFee,risk:v.risk,desc:v.desc});
+          changed=true;
+        }
+      });
+      if(changed)save();
+    })();
+    // —— 统一字段：为所有项目补齐字段（封面/地点/时长/餐饮/额外费用/风险），不覆盖用户已填写的内容 ——
+    const PROJECT_SUPPLEMENT={
+      '城市定向挑战赛':{image:'images/city_challenge.jpg',location:'城市核心区（地标沿线）',duration:'半天（4-5 小时）',catering:'能量补给包 + 简餐',extraFee:'如需专业摄影/航拍另计',risk:'户外活动注意防晒补水，运动量较大'},
+      'AI创意工作坊':{image:'images/ai_workshop.jpg',location:'公司会议室 / 共享创意空间',duration:'半天（4 小时）',catering:'茶歇 + 轻食',extraFee:'AI 工具授权费用另计',risk:'需提前确认网络与账号权限'},
+      '飞盘嘉年华':{image:'images/frisbee.jpg',location:'户外草地 / 城市公园',duration:'3-4 小时',catering:'野餐 / 简餐',extraFee:'场地租赁费另计',risk:'轻运动，注意热身避免拉伤'},
+      '密室协作解谜':{image:'images/escape_room.jpg',location:'密室主题馆（市内）',duration:'2-3 小时',catering:'馆内不含餐饮，可自行安排',extraFee:'部分主题额外收费',risk:'幽闭空间，恐高/密闭恐惧者慎选'},
+      '公益环保行动':{image:'images/eco_action.jpg',location:'社区 / 公园 / 海岸',duration:'半天（4 小时）',catering:'简餐 / 志愿者餐',extraFee:'捐赠物资费用另计',risk:'户外注意防晒，清理现场注意安全'},
+      '团队即兴戏剧':{image:'images/improv_theater.jpg',location:'排练室 / 多功能厅',duration:'3-4 小时',catering:'茶歇',extraFee:'如需专业导演/剧场另计',risk:'无特殊风险，放开参与即可'},
+      '乐游园':{location:'乐游园（城市近郊）',duration:'半天-全天',catering:'庭院下午茶 / 烧烤可选',extraFee:'遮阳棚、桌椅套餐费用',risk:'户外注意防晒，雨天改期'},
+      '落雁岛湖畔营地':{location:'落雁岛湖畔营地',duration:'1-2 天（可过夜）',catering:'露营烧烤 + 篝火晚会',extraFee:'帐篷 / 露营装备租赁费',risk:'湖边注意安全，夜间注意防蚊'},
+      'Party Day 运动超乐场':{location:'Party Day 运动超乐场（室内）',duration:'2-3 小时',catering:'馆内餐吧 / 轻食',extraFee:'保龄球局数超出另计',risk:'运动注意热身，建议穿防滑鞋'},
+      '东篱老屋团建基地':{location:'东篱老屋团建基地',duration:'1-2 天',catering:'烧烤自助 + 农家餐',extraFee:'水上项目 / 越野车等单项另计',risk:'水上项目需穿救生衣，注意安全'}
+    };
+    (function(){
+      var changed=false;
+      projects.forEach(function(p){
+        var s=PROJECT_SUPPLEMENT[p.name]||null;
+        if(!s)return;
+        Object.keys(s).forEach(function(k){
+          if(p[k]===undefined||p[k]===null||p[k]===''){ p[k]=s[k]; changed=true; }
+        });
+      });
+      if(changed)save();
+    })();
+    // —— 武汉团建项目库（50个）：字段与现有项目完全一致，数据来自携程/马蜂窝等公开攻略与推荐（价格/评分为市场参考值，可在编辑弹窗中修改）——
+    const LIBRARY_SEED=[
+      {name:'东湖绿道环湖骑行',type:'户外挑战',people:'20-100人',budget:'¥50-120/人',rating:'4.8',level:'人气推荐',icon:'🚴',image:'',location:'东湖绿道（梨园—磨山段）',duration:'半天（4-5 小时）',catering:'湖畔简餐 / 野餐',extraFee:'自行车租赁费另计',risk:'注意防晒补水，遵守骑行安全',desc:'环湖绿道骑行打卡，湖光山色中磨炼默契与耐力，行程轻松风景好。'},
+      {name:'九真山森林徒步',type:'户外挑战',people:'20-80人',budget:'¥80-180/人',rating:'4.7',level:'森林氧吧',icon:'🥾',image:'',location:'蔡甸九真山',duration:'全天（6-7 小时）',catering:'农家菜午餐',extraFee:'玻璃桥 / 森林飞越另计',risk:'山路注意防滑，穿运动鞋',desc:'90% 森林覆盖的天然氧吧，知音文化 + 玻璃桥 + 森林飞越，经典徒步路线。'},
+      {name:'木兰草原骑马射箭',type:'户外挑战',people:'30-150人',budget:'¥150-300/人',rating:'4.9',level:'草原风情',icon:'🐎',image:'',location:'黄陂木兰草原',duration:'全天',catering:'蒙古包特色餐',extraFee:'项目套票另计',risk:'骑马须听从教练，注意安全',desc:'华中 5A 草原风情，骑马射箭 + 《云中战歌》实景马战 + 篝火烟花夜场。'},
+      {name:'梁子湖皮划艇竞速',type:'户外挑战',people:'10-60人',budget:'¥120-220/人',rating:'4.8',level:'水上竞技',icon:'🛶',image:'',location:'梁子湖水上基地',duration:'半天（3-4 小时）',catering:'湖边简餐',extraFee:'装备租赁费用包含',risk:'必须穿救生衣，注意水上安全',desc:'双人艇 / 单人艇竞速接力，考验协作与节奏，夏日清凉首选。'},
+      {name:'东湖湖心岛桨板体验',type:'户外挑战',people:'10-40人',budget:'¥150-250/人',rating:'4.7',level:'潮流体验',icon:'🏄',image:'',location:'东湖湖心岛',duration:'半天（3 小时）',catering:'湖畔野餐',extraFee:'教练费用包含',risk:'有落水风险，备换洗衣物',desc:'湖面桨板站立滑行，解锁夏日清凉新玩法，团队平衡与默契挑战。'},
+      {name:'古驿生态园丛林真人CS',type:'户外挑战',people:'20-100人',budget:'¥100-200/人',rating:'4.8',level:'团队对抗',icon:'🔫',image:'',location:'江夏古驿生态园',duration:'半天（3-4 小时）',catering:'土灶饭 / 烧烤',extraFee:'装备、弹药费用包含',risk:'听从裁判，护具佩戴齐全',desc:'丛林激光枪对抗，含隐身/复活等技能卡，战术配合与团队作战。'},
+      {name:'十里莲华ATV山地越野',type:'户外挑战',people:'15-30人',budget:'¥127-180/人',rating:'4.7',level:'越野狂飙',icon:'🏎️',image:'',location:'江夏十里莲华养心谷',duration:'全天',catering:'农家餐',extraFee:'油费另计',risk:'穿运动服，勿穿拖鞋长裙',desc:'6-7 公里盘山 ATV 山地越野，速度与心跳并存，还可摸鱼捉虾、插秧收稻。'},
+      {name:'木兰草原滑草滑车',type:'户外挑战',people:'20-100人',budget:'¥120-220/人',rating:'4.7',level:'亲子友好',icon:'🛝',image:'',location:'黄陂木兰草原',duration:'半天（4 小时）',catering:'草原简餐',extraFee:'滑草/滑车套票另计',risk:'服从工作人员指挥',desc:'彩虹滑道 + 新西兰滑车 + 花海小火车，趣味十足老少皆宜。'},
+      {name:'九真山玻璃桥森林飞越',type:'户外挑战',people:'20-80人',budget:'¥100-200/人',rating:'4.6',level:'高空挑战',icon:'🌉',image:'',location:'蔡甸九真山',duration:'半天（4 小时）',catering:'农家菜',extraFee:'玻璃桥门票另计',risk:'恐高者慎选，听从指引',desc:'玻璃桥 + 高空飞越挑战，突破心理极限，凝聚团队勇气。'},
+      {name:'八分山日落轻徒步',type:'户外挑战',people:'10-50人',budget:'¥40-100/人',rating:'4.8',level:'日落打卡',icon:'🌄',image:'',location:'江夏八分山',duration:'下午—傍晚',catering:'山脚农家餐',extraFee:'无（免费路线）',risk:'备手电，注意下山安全',desc:'江夏最高点看武汉日落天花板，白云洞石窟探秘 + 环山轻徒步。'},
+      {name:'洪山高空断桥拓展',type:'户外挑战',people:'20-100人',budget:'¥120-220/人',rating:'4.6',level:'突破自我',icon:'🧗',image:'',location:'洪山区拓展基地',duration:'半天（4 小时）',catering:'基地简餐',extraFee:'保险费用包含',risk:'严格安全绳，听教练指令',desc:'高空断桥 + 信任背摔 + 毕业墙，经典素质拓展，设施季度第三方安检。'},
+      {name:'木兰天池攀岩挑战',type:'户外挑战',people:'10-50人',budget:'¥150-280/人',rating:'4.7',level:'勇攀高峰',icon:'⛰️',image:'',location:'黄陂木兰天池',duration:'全天',catering:'农家餐',extraFee:'门票另计',risk:'专业护具，教练陪同',desc:'天池山水间攀岩 + 高空挑战，相互鼓励磨炼意志与信任。'},
+      {name:'古驿生态园卡丁车对抗',type:'户外挑战',people:'15-60人',budget:'¥100-180/人',rating:'4.7',level:'速度激情',icon:'🏁',image:'',location:'江夏古驿生态园',duration:'半天（3 小时）',catering:'园区餐饮',extraFee:'单场次费用另计',risk:'系好安全带，遵守赛道规则',desc:'卡丁车赛道竞速对抗，组队 PK 释放压力，肾上腺素飙升。'},
+      {name:'大余湾古道定向越野',type:'户外挑战',people:'20-80人',budget:'¥90-160/人',rating:'4.6',level:'寻宝定向',icon:'🧭',image:'',location:'黄陂大余湾',duration:'半天（5 小时）',catering:'农家饭',extraFee:'地图/道具费用包含',risk:'注意乡间道路安全',desc:'明清古村落定向寻宝，打卡拍照、解谜闯关，智勇闯关赢积分。'},
+      {name:'马鞍山森林公园徒步寻宝',type:'户外挑战',people:'15-60人',budget:'¥60-120/人',rating:'4.6',level:'森林探索',icon:'🌲',image:'',location:'马鞍山森林公园',duration:'半天（4 小时）',catering:'野餐',extraFee:'道具费用包含',risk:'防蚊虫，结伴而行',desc:'森林步道徒步 + 线索寻宝，亲近自然寓教于乐。'},
+      {name:'青山江滩夜跑挑战赛',type:'户外挑战',people:'20-100人',budget:'¥30-80/人',rating:'4.5',level:'燃动夜跑',icon:'🏃',image:'',location:'青山江滩',duration:'晚间 2-3 小时',catering:'能量补给',extraFee:'奖牌/物料另计',risk:'注意江边安全',desc:'江滩荧光夜跑 + 打卡挑战，夜风中的奔跑，一起燃动起来。'},
+      {name:'FREE PASSION超乐馆潮玩',type:'室内创意',people:'30-200人',budget:'¥100-150/人',rating:'4.8',level:'一票畅玩',icon:'🎮',image:'',location:'江汉路 Happy站台四楼',duration:'半天-全天',catering:'楼下商圈自理',extraFee:'全项目费用包含',risk:'周末需提前 3 天预约',desc:'近 8000㎡ 60+ 项目，室内卡丁车 + VR + 射箭 + DIY 一条龙，组织者零操心。'},
+      {name:'火迷潮玩一票畅玩',type:'室内创意',people:'10-20人',budget:'¥70-120/人',rating:'4.6',level:'高性价比',icon:'🕹️',image:'',location:'江汉路/南京路',duration:'半天（3-4 小时）',catering:'商圈自理',extraFee:'全项目费用包含',risk:'周末人气高，建议错峰',desc:'VR 星际空间 + 电竞 + 麻将 + 狼人杀 + 桌游 + 射箭，一票畅玩。'},
+      {name:'沉浸式古风剧本杀',type:'室内创意',people:'6-30人',budget:'¥120-260/人',rating:'4.8',level:'沉浸体验',icon:'🎭',image:'',location:'市内剧本杀馆',duration:'3-4 小时',catering:'馆内茶饮',extraFee:'换装/妆造另计',risk:'剧本类型提前确认',desc:'古风/谍战/欢乐阵营本，服化道齐全 + NPC 互动，角色扮演沉浸入戏。'},
+      {name:'谍战密室逃脱',type:'室内创意',people:'6-20人',budget:'¥100-200/人',rating:'4.7',level:'烧脑解谜',icon:'🕵️',image:'',location:'汉口密室主题馆',duration:'2-3 小时',catering:'无',extraFee:'部分主题额外收费',risk:'幽闭空间慎选',desc:'角色分工 + 线索推理 + 限时任务，沉浸式解谜强化沟通与配合。'},
+      {name:'积木电竞别墅轰趴',type:'室内创意',people:'10-40人',budget:'¥50-90/人',rating:'4.7',level:'私密包场',icon:'🎤',image:'',location:'江汉路/汉口地铁口',duration:'半天-全天',catering:'自助烧烤 / 火锅',extraFee:'整栋包场约 1000-2000 元/晚',risk:'节假日提前预订',desc:'独栋别墅 + KTV + 电竞房 + 桌游 + 厨房烧烤，私密性极佳。'},
+      {name:'威廉古堡别墅轰趴',type:'室内创意',people:'20-80人',budget:'¥115-160/人',rating:'4.5',level:'轻奢轰趴',icon:'🏰',image:'',location:'东湖小李村 / 江夏玉龙岛',duration:'半天-全天',catering:'中餐/烧烤/火锅/烤全羊',extraFee:'商业用电电费另计',risk:'提前锁定档期',desc:'全国连锁独栋轰趴，KTV/桌球/麻将/舞台一应俱全，可配轰趴师暖场。'},
+      {name:'武汉坦轰趴别墅',type:'室内创意',people:'20-50人',budget:'¥80-130/人',rating:'4.6',level:'高性价比',icon:'🛋️',image:'',location:'洪山区',duration:'白天场/晚场',catering:'自助厨房 + 烧烤',extraFee:'订餐服务另计',risk:'提前预约场次',desc:'500㎡ 三层别墅，KTV/台球/体感游戏/麻将/100 寸投影一应俱全。'},
+      {name:'湖滨主题轰趴别墅',type:'室内创意',people:'20-40人',budget:'¥90-140/人',rating:'4.6',level:'电竞轰趴',icon:'🖥️',image:'',location:'江夏区',duration:'半天-全天',catering:'自助厨房',extraFee:'轰趴师另计',risk:'提前预订',desc:'420㎡ 四层别墅，电竞五黑房 + KTV + VR + 冰球 + 桌面足球。'},
+      {name:'趣泥手工坊陶艺DIY',type:'室内创意',people:'10-20人',budget:'¥80-120/人',rating:'4.7',level:'解压治愈',icon:'🏺',image:'',location:'江汉路新佳丽时尚广场',duration:'2-3 小时',catering:'无',extraFee:'DIY 按件收费',risk:'营业时间提前确认',desc:'专业老师指导陶艺/捏泥，无需基础，减压出片，成品可带走。'},
+      {name:'烘焙DIY工坊',type:'室内创意',people:'8-30人',budget:'¥90-160/人',rating:'4.6',level:'甜心手作',icon:'🧁',image:'',location:'市内烘焙工作室',duration:'2-3 小时',catering:'成品可带走',extraFee:'食材费用包含',risk:'过敏原提前告知',desc:'分组做蛋糕/饼干，协作 + 创意 + 美味，成品带回家做纪念。'},
+      {name:'漆扇非遗手作',type:'室内创意',people:'8-40人',budget:'¥80-150/人',rating:'4.7',level:'国风手作',icon:'🎐',image:'',location:'市内非遗体验馆',duration:'2-3 小时',catering:'无',extraFee:'材料费用包含',risk:'颜料注意染色',desc:'非遗漆扇/扎染制作，感受传统文化，作品可带走作纪念。'},
+      {name:'油画零基础创作',type:'室内创意',people:'10-30人',budget:'¥90-160/人',rating:'4.6',level:'艺术共创',icon:'🎨',image:'',location:'市内画室',duration:'3 小时',catering:'茶歇',extraFee:'画材费用包含',risk:'无特殊风险',desc:'零基础油画创作，团队协作共绘一幅画，激发创意表达。'},
+      {name:'狼人杀桌游之夜',type:'室内创意',people:'10-30人',budget:'¥40-80/人',rating:'4.6',level:'欢乐社交',icon:'🃏',image:'',location:'市内桌游吧',duration:'3-4 小时',catering:'饮品小食',extraFee:'包场费另计',risk:'无',desc:'狼人杀/三国杀/UNO 等桌游，逻辑与演技碰撞，轻松破冰社交。'},
+      {name:'蹦床运动公园',type:'室内创意',people:'10-60人',budget:'¥80-160/人',rating:'4.7',level:'释放活力',icon:'🤸',image:'',location:'市内蹦床馆',duration:'2-3 小时',catering:'无',extraFee:'防滑袜另购',risk:'提前热身避免拉伤',desc:'网红蹦床 + 海绵池 + 攀岩墙，跳出束缚，室内运动释放压力。'},
+      {name:'墨斗山居湖畔营地',type:'轻松休闲',people:'20-100人',budget:'¥180-350/人',rating:'4.8',level:'轻奢露营',icon:'⛺',image:'',location:'梁子湖畔墨斗山居',duration:'1-2 天',catering:'临湖烤肉 BBQ',extraFee:'UTV 越野另计',risk:'湖边注意安全',desc:'全国甲级民宿 + 6000㎡ 临湖大草坪 + UTV 越野 + 轰趴馆，拎包即玩的“小洱海”。'},
+      {name:'葫芦岛花海露营',type:'轻松休闲',people:'20-120人',budget:'¥150-300/人',rating:'4.8',level:'网红营地',icon:'🌺',image:'',location:'梁子湖畔葫芦岛',duration:'1 天-1 晚',catering:'森林烤吧自助烧烤',extraFee:'房车/卡丁车另计',risk:'防蚊，注意营地安全',desc:'800 亩网红营地，莫奈花海 + 丛林卡丁车 + 房车露营，央视报道过。'},
+      {name:'野村谷草坪露营',type:'轻松休闲',people:'20-80人',budget:'¥120-250/人',rating:'4.7',level:'自然治愈',icon:'🏕️',image:'',location:'黄陂野村谷',duration:'1 天-1 晚',catering:'田园餐 / 烧烤',extraFee:'七彩滑道另计',risk:'山路驾车注意安全',desc:'山林溪谷 + 草坪露营 + 真人CS + 七彩滑道 + 萌宠互动，一站式轻松玩。'},
+      {name:'东湖沙滩BBQ露营',type:'轻松休闲',people:'20-100人',budget:'¥120-220/人',rating:'4.7',level:'湖畔度假',icon:'🏖️',image:'',location:'东湖沙滩浴场',duration:'半天-1 晚',catering:'沙滩 BBQ',extraFee:'露营装备另租',risk:'注意防晒防暑',desc:'沙滩排球 + 烧烤 + 落日打卡 + 篝火，湖畔度假氛围拉满。'},
+      {name:'梁子岛渔村吃蟹',type:'轻松休闲',people:'20-100人',budget:'¥200-400/人',rating:'4.8',level:'湖鲜之旅',icon:'🦀',image:'',location:'鄂州梁子岛',duration:'1 天',catering:'渔家乐大闸蟹',extraFee:'船票另计',risk:'乘船注意安全',desc:'乘船登岛 + 明清古街 + 环岛骑行 + 吃武昌鱼大闸蟹，休闲度假。'},
+      {name:'围炉煮茶慢时光',type:'轻松休闲',people:'6-30人',budget:'¥60-120/人',rating:'4.6',level:'松弛治愈',icon:'🍵',image:'',location:'营地/茶室/民宿',duration:'3-4 小时',catering:'茶点',extraFee:'茶具/场地另计',risk:'注意炭火安全',desc:'围炉煮茶 + 烤红薯 + 畅聊，慢节奏社交，社恐友好零压力。'},
+      {name:'田园果蔬采摘',type:'轻松休闲',people:'10-80人',budget:'¥60-130/人',rating:'4.6',level:'田园之乐',icon:'🍓',image:'',location:'江夏/黄陂采摘园',duration:'半天',catering:'农家餐',extraFee:'按采摘量计费',risk:'季节性活动提前确认',desc:'当季果蔬采摘 + 拍照打卡，亲近自然，收获季节的快乐。'},
+      {name:'农家土灶野炊',type:'轻松休闲',people:'10-60人',budget:'¥80-150/人',rating:'4.7',level:'厨艺比拼',icon:'🍳',image:'',location:'江夏/黄陂农庄',duration:'半天-全天',catering:'土灶做饭 / 烤全羊',extraFee:'食材费另计',risk:'注意灶火安全',desc:'分组土灶协作做饭，体验烟火气，吃自己做的柴火饭。'},
+      {name:'喜德堂复古调酒趴',type:'轻松休闲',people:'10-30人',budget:'¥80-120/人',rating:'4.6',level:'微醺社交',icon:'🍸',image:'',location:'汉口江滩/江汉路',duration:'2-3 小时',catering:'小食',extraFee:'包厢费另计',risk:'理性饮酒',desc:'复古花式调酒 + 包厢社交 + 江滩散步，氛围感拉满的轻团建。'},
+      {name:'保龄球俱乐部PK',type:'轻松休闲',people:'10-40人',budget:'¥60-120/人',rating:'4.6',level:'经典运动',icon:'🎳',image:'',location:'市内保龄球馆',duration:'2-3 小时',catering:'馆内餐吧',extraFee:'局数超出另计',risk:'穿防滑鞋',desc:'分组保龄球 PK + 计分赛，轻松又有竞技感，室内不受天气影响。'},
+      {name:'公园健康跑晨练',type:'轻松休闲',people:'10-100人',budget:'¥20-60/人',rating:'4.5',level:'元气满满',icon:'🌅',image:'',location:'市区公园/江滩',duration:'2 小时',catering:'能量早餐',extraFee:'补给物料另计',risk:'晨间注意保暖',desc:'晨跑 + 拉伸 + 打卡，用一场晨练开启元气满满的一天。'},
+      {name:'湖边垂钓休闲日',type:'轻松休闲',people:'8-30人',budget:'¥80-150/人',rating:'4.5',level:'静谧放松',icon:'🎣',image:'',location:'梁子湖/湖塘垂钓基地',duration:'半天-全天',catering:'农家餐',extraFee:'渔具租赁另计',risk:'注意水边安全',desc:'垂钓比赛 + 野餐，静谧中沉淀团队，享受慢生活。'},
+      {name:'趣味运动会',type:'培训共创',people:'30-200人',budget:'¥80-180/人',rating:'4.8',level:'全员狂欢',icon:'🏆',image:'',location:'汉口江滩足球场/蔡甸体育基地',duration:'半天-全天',catering:'团餐 / 补给',extraFee:'道具/教练费用包含',risk:'运动前充分热身',desc:'鼓动人心/同舟共济/毛毛虫竞速等趣味项目，全员参与氛围拉满。'},
+      {name:'旱地冰壶策略赛',type:'培训共创',people:'12-60人',budget:'¥90-180/人',rating:'4.7',level:'策略博弈',icon:'🥌',image:'',location:'蔡甸体育基地/室内馆',duration:'半天（3-4 小时）',catering:'茶歇',extraFee:'场地费用包含',risk:'无',desc:'冬奥标准旱地冰壶，策略与团队博弈，考验默契与判断。'},
+      {name:'非洲鼓团队合奏',type:'培训共创',people:'20-100人',budget:'¥100-200/人',rating:'4.7',level:'同频共振',icon:'🥁',image:'',location:'室内/营地',duration:'3-4 小时',catering:'茶歇',extraFee:'乐器费用包含',risk:'无',desc:'百人非洲鼓同频合奏，打破层级隔阂，凝聚团队向心力。'},
+      {name:'纳斯卡巨画共创',type:'培训共创',people:'30-200人',budget:'¥80-160/人',rating:'4.7',level:'震撼共创',icon:'🖼️',image:'',location:'大草坪/室内',duration:'半天',catering:'团餐',extraFee:'画布颜料费用包含',risk:'注意颜料沾染衣物',desc:'多人分工共绘巨画，拼出企业愿景，全员共创超震撼。'},
+      {name:'F1赛车组装竞速',type:'培训共创',people:'20-80人',budget:'¥120-220/人',rating:'4.6',level:'团队造车',icon:'🏎️',image:'',location:'室内活动空间',duration:'半天',catering:'茶歇/简餐',extraFee:'材料费用包含',risk:'无',desc:'从零件到赛道的 F1 造车竞速，分工协作 + 工程设计，热血沸腾。'},
+      {name:'多米诺骨牌挑战',type:'培训共创',people:'15-80人',budget:'¥80-150/人',rating:'4.6',level:'耐心协作',icon:'🁢',image:'',location:'室内',duration:'3-4 小时',catering:'茶歇',extraFee:'骨牌费用包含',risk:'无',desc:'大型多米诺骨牌搭建，细心 + 协作 + 全队配合见证最后绽放。'},
+      {name:'长江净滩公益行动',type:'公益实践',people:'10-100人',budget:'¥50-120/人',rating:'4.9',level:'绿色公益',icon:'🌊',image:'',location:'长江/江滩沿线',duration:'半天（4 小时）',catering:'简餐 / 志愿者餐',extraFee:'物资费用另计',risk:'注意江边安全',desc:'长江岸线净滩清理，践行企业社会责任，公益与团队结合。'},
+      {name:'社区敬老志愿服务',type:'公益实践',people:'10-80人',budget:'¥40-100/人',rating:'4.8',level:'温暖公益',icon:'❤️',image:'',location:'社区/养老机构',duration:'半天',catering:'简餐',extraFee:'慰问物资另计',risk:'尊重老人隐私',desc:'敬老陪伴 + 文艺表演，传递温暖正能量，增强团队社会责任感。'}
+    ];
+    // —— 50 个武汉项目的实景封面映射（按项目名匹配，已入库项目也会在页面加载时自动补齐）——
+    const COVER_MAP={
+      '东湖绿道环湖骑行':'images/wuhan_01.jpg',
+      '九真山森林徒步':'images/wuhan_02.jpg',
+      '木兰草原骑马射箭':'images/wuhan_03.jpg',
+      '梁子湖皮划艇竞速':'images/wuhan_04.jpg',
+      '东湖湖心岛桨板体验':'images/wuhan_05.jpg',
+      '古驿生态园丛林真人CS':'images/wuhan_06.jpg',
+      '十里莲华ATV山地越野':'images/wuhan_07.jpg',
+      '木兰草原滑草滑车':'images/wuhan_08.jpg',
+      '九真山玻璃桥森林飞越':'images/wuhan_09.jpg',
+      '八分山日落轻徒步':'images/wuhan_10.jpg',
+      '洪山高空断桥拓展':'images/wuhan_11.jpg',
+      '木兰天池攀岩挑战':'images/wuhan_12.jpg',
+      '古驿生态园卡丁车对抗':'images/wuhan_13.jpg',
+      '大余湾古道定向越野':'images/wuhan_14.jpg',
+      '马鞍山森林公园徒步寻宝':'images/wuhan_15.jpg',
+      '青山江滩夜跑挑战赛':'images/wuhan_16.jpg',
+      'FREE PASSION超乐馆潮玩':'images/wuhan_17.jpg',
+      '火迷潮玩一票畅玩':'images/wuhan_18.jpg',
+      '沉浸式古风剧本杀':'images/wuhan_19.jpg',
+      '谍战密室逃脱':'images/wuhan_20.jpg',
+      '积木电竞别墅轰趴':'images/wuhan_21.jpg',
+      '威廉古堡别墅轰趴':'images/wuhan_22.jpg',
+      '武汉坦轰趴别墅':'images/wuhan_23.jpg',
+      '湖滨主题轰趴别墅':'images/wuhan_24.jpg',
+      '趣泥手工坊陶艺DIY':'images/wuhan_25.jpg',
+      '烘焙DIY工坊':'images/wuhan_26.jpg',
+      '漆扇非遗手作':'images/wuhan_27.jpg',
+      '油画零基础创作':'images/wuhan_28.jpg',
+      '狼人杀桌游之夜':'images/wuhan_29.jpg',
+      '蹦床运动公园':'images/wuhan_30.jpg',
+      '墨斗山居湖畔营地':'images/wuhan_31.jpg',
+      '葫芦岛花海露营':'images/wuhan_32.jpg',
+      '野村谷草坪露营':'images/wuhan_33.jpg',
+      '东湖沙滩BBQ露营':'images/wuhan_34.jpg',
+      '梁子岛渔村吃蟹':'images/wuhan_35.jpg',
+      '围炉煮茶慢时光':'images/wuhan_36.jpg',
+      '田园果蔬采摘':'images/wuhan_37.jpg',
+      '农家土灶野炊':'images/wuhan_38.jpg',
+      '喜德堂复古调酒趴':'images/wuhan_39.jpg',
+      '保龄球俱乐部PK':'images/wuhan_40.jpg',
+      '公园健康跑晨练':'images/wuhan_41.jpg',
+      '湖边垂钓休闲日':'images/wuhan_42.jpg',
+      '趣味运动会':'images/wuhan_43.jpg',
+      '旱地冰壶策略赛':'images/wuhan_44.jpg',
+      '非洲鼓团队合奏':'images/wuhan_45.jpg',
+      '纳斯卡巨画共创':'images/wuhan_46.jpg',
+      'F1赛车组装竞速':'images/wuhan_47.jpg',
+      '多米诺骨牌挑战':'images/wuhan_48.jpg',
+      '长江净滩公益行动':'images/wuhan_49.jpg',
+      '社区敬老志愿服务':'images/wuhan_50.jpg'
+    };
+    (function(){
+      var changed=false;
+      var now=Date.now();
+      var names={};projects.forEach(function(p){names[p.name]=1});
+      LIBRARY_SEED.forEach(function(s){
+        if(names[s.name])return;
+        var p={id:Date.now()+Math.floor(Math.random()*99999),name:s.name,type:s.type,people:s.people,budget:s.budget,rating:s.rating,level:s.level,icon:s.icon,image:COVER_MAP[s.name]||s.image,location:s.location,duration:s.duration,catering:s.catering,extraFee:s.extraFee,risk:s.risk,desc:s.desc};
+        p.addedAt=now;
+        projects.push(p);
+        names[s.name]=1;
+        changed=true;
+      });
+      if(changed)save();
+    })();
+    // —— 为已入库的武汉项目补齐实景封面（不覆盖用户已设置的封面）——
+    (function(){
+      var changed=false;
+      projects.forEach(function(p){
+        if(!p.image&&COVER_MAP[p.name]){p.image=COVER_MAP[p.name];changed=true;}
+      });
+      if(changed)save();
+    })();
+    (function(){
+      var changed=false;
+      projects.forEach(function(p){
+        if(p.image&&p.image.indexOf('AI应用创建/设计团队管理应用/')===0){p.image=p.image.replace('AI应用创建/设计团队管理应用/','');changed=true;}
+        if(p.photos&&p.photos.length){p.photos.forEach(function(u,i){if(u&&u.indexOf('AI应用创建/设计团队管理应用/')===0){p.photos[i]=u.replace('AI应用创建/设计团队管理应用/','');changed=true;}});}
+      });
+      if(changed)save();
+    })();
+
+    const types=['全部','户外挑战','室内创意','轻松休闲','培训共创','公益实践'];let current='全部',activeIndex=0;
+    function save(){localStorage.setItem('teamProjectsV2',JSON.stringify(projects));localStorage.setItem('teamFavs',JSON.stringify(favorites));localStorage.setItem('teamPreviews',JSON.stringify(previews));localStorage.setItem('teamFavTimes',JSON.stringify(favTimes))}
+    function switchPage(page){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.getElementById(page).classList.add('active');document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.page===page));render()}
+    document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{if(t.dataset.page==='add'){openAdd();return}switchPage(t.dataset.page)});
+    function isFav(id){return favorites.includes(id)}
+    function toggleFav(id,e){if(e)e.stopPropagation();favorites=isFav(id)?favorites.filter(x=>x!==id):[...favorites,id];favTimes[id]=Date.now();save();render();if(modal.classList.contains('show'))fillDetail(activeIndex);toastMsg(isFav(id)?'已收藏项目':'已取消收藏')}
+    function coverHtml(p,i){const c=colors[i%colors.length];return p.image?`<img src="${p.image}" alt="${p.name}">`:`<div style="height:100%;background:linear-gradient(135deg,${c[0]},${c[1]});display:grid;place-items:center;color:#fff;font-size:54px">${p.icon||'✨'}</div>`}
+    function card(p,i){return `<article class="card" onclick="openDetail(${i})"><button class="fav ${isFav(p.id)?'on':''}" onclick="toggleFav(${p.id},event)">${isFav(p.id)?'♥':'♡'}</button><div class="cover">${coverHtml(p,i)}<div class="tag">${p.level||'精选'}</div></div><div class="body"><h3>${p.name}</h3><div class="desc">${p.desc}</div><div class="meta"><span class="pill">${p.type}</span><span class="pill">${p.people}</span><span class="pill">${p.budget||'费用待定'}</span><span class="pill rating">★ ${p.rating||'暂无'}</span></div></div></article>`}
+    // —— 首页推荐：团建库浏览过的 + 收藏过的 + 最近添加的项目（按最近活动时间排序，最多 6 个）——
+    function recommendList(){
+      var score={};
+      Object.keys(previews).forEach(function(id){score[id]=Math.max(score[id]||0,previews[id])});
+      favorites.forEach(function(id){score[id]=Math.max(score[id]||0,favTimes[id]||0)});
+      projects.forEach(function(p){if(p.addedAt){score[p.id]=Math.max(score[p.id]||0,p.addedAt)}});
+      return projects.filter(function(p){return score[p.id]}).sort(function(a,b){return score[b.id]-score[a.id]}).slice(0,6);
+    }
+    function render(){var rec=recommendList();document.getElementById('recommendGrid').innerHTML=rec.length?rec.map(function(p){return card(p,projects.indexOf(p))}).join(''):'<div class="empty">暂无推荐。去团建库浏览项目、收藏喜欢的内容，或添加新项目后，这里会自动为你推荐。</div>';document.getElementById('filters').innerHTML=types.map(t=>`<button class="chip ${t===current?'active':''}" onclick="current='${t}';render()">${t}</button>`).join('');let base=current==='全部'?projects:projects.filter(p=>p.type===current);let list=base.slice().sort((a,b)=>(b.image?1:0)-(a.image?1:0));document.getElementById('libraryGrid').innerHTML=list.length?list.map(p=>card(p,projects.indexOf(p))).join(''):'<div class="empty">暂无该类型项目，可以去添加一个。</div>';let favs=projects.filter(p=>isFav(p.id));document.getElementById('favGrid').innerHTML=favs.length?favs.map(p=>card(p,projects.indexOf(p))).join(''):'<div class="empty">还没有收藏项目，点击卡片右上角 ♡ 即可收藏。</div>'}
+    function fillDetail(i){let p=projects[i];detailPhotos=(p.photos&&p.photos.length)?p.photos.slice():(p.image?[p.image]:[]);photoIdx=0;renderCover();dName.textContent=p.name;dType.textContent=p.type+' · '+(p.level||'精选');dDesc.textContent=p.desc;const fields=[['费用',p.budget||'费用待定'],['类型',p.type||'—'],['人数',p.people||'—'],['评价','★ '+(p.rating||'暂无'),1],['团建地点',p.location||'待补充'],['建议时长',p.duration||'待补充'],['餐饮方案',p.catering||'待补充'],['额外费用',p.extraFee||'无额外费用'],['风险提示',p.risk||'待补充']];dFields.innerHTML=fields.map(f=>`<div class="detail-item"><b>${f[0]}</b><span${f[2]?' class="rating"':''}>${f[1]}</span></div>`).join('');favBtn.textContent=isFav(p.id)?'♥ 已收藏':'♡ 收藏项目';favBtn.onclick=()=>toggleFav(p.id);smsText.value=`你好，我想发起团建项目「${p.name}」，项目类型：${p.type}，费用：${p.budget||'待定'}，人数：${p.people}。我们一起参加吗？`;launchBox.style.display='none'}
+    function renderCover(){const p=projects[activeIndex];if(!p)return;if(detailPhotos.length){dCover.innerHTML=`<img src="${detailPhotos[photoIdx]}" alt="${p.name}"><span class="car-ind">${photoIdx+1} / ${detailPhotos.length}</span><button class="car-btn left" onclick="prevPhoto()">‹</button><button class="car-btn right" onclick="nextPhoto()">›</button>`}else{dCover.innerHTML=coverHtml(p,activeIndex)}}
+    function prevPhoto(){if(!detailPhotos.length)return;photoIdx=(photoIdx-1+detailPhotos.length)%detailPhotos.length;renderCover()}
+    function nextPhoto(){if(!detailPhotos.length)return;photoIdx=(photoIdx+1)%detailPhotos.length;renderCover()}
+    function compressImage(file,cb){const reader=new FileReader();reader.onload=e=>{const img=new Image();img.onload=()=>{let w=img.width,h=img.height,max=900;if(Math.max(w,h)>max){if(w>h){h=Math.round(h*max/w);w=max}else{w=Math.round(w*max/h);h=max}}const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);cb(c.toDataURL('image/jpeg',0.72))};img.src=e.target.result};reader.readAsDataURL(file)}
+    function refreshThumbs(){document.getElementById('photoThumbs').innerHTML=newPhotoList.map((d,i)=>`<div class="ph" onclick="setCover(${i})" title="点击设为封面"><img src="${d}">${i===0?'<span class="cover-badge">封面</span>':''}<button type="button" onclick="event.stopPropagation();removePhoto(${i})">×</button></div>`).join('')}
+    function addFiles(files){Array.from(files).forEach(f=>{if(!f.type.startsWith('image/'))return;compressImage(f,d=>{newPhotoList.push(d);refreshThumbs()})})}
+    function previewPhotos(){addFiles(document.getElementById('photos').files);document.getElementById('photos').value=''}
+    function removePhoto(i){newPhotoList.splice(i,1);refreshThumbs()}
+    function setCover(i){if(i===0)return;const d=newPhotoList.splice(i,1)[0];newPhotoList.unshift(d);refreshThumbs()}
+    (function(){const z=document.getElementById('uploadZone');if(!z)return;z.addEventListener('dragover',e=>{e.preventDefault();z.classList.add('drag')});z.addEventListener('dragleave',()=>z.classList.remove('drag'));z.addEventListener('drop',e=>{e.preventDefault();z.classList.remove('drag');addFiles(e.dataTransfer.files)})})();
+    function openDetail(i){activeIndex=i;if(projects[i]){previews[projects[i].id]=Date.now();save();}fillDetail(i);modal.classList.add('show')}
+    function closeModal(){modal.classList.remove('show')} modal.onclick=e=>{if(e.target.id==='modal')closeModal()}
+    function deleteProject(){const p=projects[activeIndex];if(!p)return;if(!confirm(`确定删除「${p.name}」吗？删除后不可恢复。`))return;const id=p.id;projects=projects.filter(x=>x.id!==id);favorites=favorites.filter(x=>x!==id);delete previews[id];delete favTimes[id];save();closeModal();render();toastMsg('项目已删除')}
+    function showLaunch(){launchBox.style.display='block'}
+    function sendSms(){let phoneVal=phone.value.trim();if(!phoneVal){toastMsg('请先填写对方手机号');return}let msg=smsText.value.trim();window.location.href=`sms:${encodeURIComponent(phoneVal)}?&body=${encodeURIComponent(msg)}`;toastMsg('已尝试打开短信应用')}
+    function toastMsg(t){toast.textContent=t;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1800)}
+    function openEdit(){const p=projects[activeIndex];if(!p)return;eName.value=p.name||'';eType.value=p.type||'轻松休闲';ePeople.value=p.people||'';eDesc.value=p.desc||'';eBudget.value=p.budget||'';eRating.value=p.rating||'4.8';eLevel.value=p.level||'';editPhotoList=(p.photos&&p.photos.length)?p.photos.slice():(p.image?[p.image]:[]);refreshEditThumbs();eIcon.value=p.icon||'';eLocation.value=p.location||'';eDuration.value=p.duration||'';eCatering.value=p.catering||'';eExtraFee.value=p.extraFee||'';eRisk.value=p.risk||'';editModal.classList.add('show')}
+    function closeEdit(){editModal.classList.remove('show')} editModal.onclick=e=>{if(e.target.id==='editModal')closeEdit()};
+    function openAdd(){projectForm.reset();newPhotoList=[];refreshThumbs();addModal.classList.add('show')}
+    function closeAdd(){addModal.classList.remove('show')} addModal.onclick=e=>{if(e.target.id==='addModal')closeAdd()};
+    let editPhotoList=[];
+    function refreshEditThumbs(){document.getElementById('ePhotoThumbs').innerHTML=editPhotoList.map((d,i)=>`<div class="ph" onclick="setEditCover(${i})" title="点击设为封面"><img src="${d}">${i===0?'<span class="cover-badge">封面</span>':''}<button type="button" onclick="event.stopPropagation();removeEditPhoto(${i})">×</button></div>`).join('')}
+    function addEditFiles(files){Array.from(files).forEach(f=>{if(!f.type.startsWith('image/'))return;compressImage(f,d=>{editPhotoList.push(d);refreshEditThumbs()})})}
+    function previewEditPhotos(){addEditFiles(document.getElementById('ePhotos').files);document.getElementById('ePhotos').value=''}
+    function removeEditPhoto(i){editPhotoList.splice(i,1);refreshEditThumbs()}
+    function setEditCover(i){if(i===0)return;const d=editPhotoList.splice(i,1)[0];editPhotoList.unshift(d);refreshEditThumbs()}
+    (function(){const z=document.getElementById('eUploadZone');if(!z)return;z.addEventListener('dragover',e=>{e.preventDefault();z.classList.add('drag')});z.addEventListener('dragleave',()=>z.classList.remove('drag'));z.addEventListener('drop',e=>{e.preventDefault();z.classList.remove('drag');addEditFiles(e.dataTransfer.files)})})();
+    editForm.onsubmit=e=>{e.preventDefault();const p=projects[activeIndex];if(!p)return;p.name=eName.value.trim()||p.name;p.type=eType.value;p.people=ePeople.value.trim();p.desc=eDesc.value.trim();p.budget=eBudget.value.trim();p.rating=eRating.value;p.level=eLevel.value.trim();const ph=editPhotoList.slice();p.image=ph[0]||p.image;p.photos=ph.length?ph:(p.photos||undefined);p.icon=eIcon.value.trim()||'✨';p.location=eLocation.value.trim();p.duration=eDuration.value.trim();p.catering=eCatering.value.trim();p.extraFee=eExtraFee.value.trim();p.risk=eRisk.value.trim();save();closeEdit();fillDetail(activeIndex);render();toastMsg('字段已保存')}
+    projectForm.onsubmit=e=>{e.preventDefault();const photos=newPhotoList.slice();projects.unshift({id:Date.now(),addedAt:Date.now(),name:name.value,type:type.value,people:people.value,budget:budget.value,rating:rating.value,level:level.value.trim()||'用户添加',desc:desc.value,image:photos[0]||'',photos:photos,icon:icon.value.trim()||'✨',location:place.value.trim(),duration:duration.value.trim(),catering:catering.value.trim(),extraFee:extraFee.value.trim(),risk:risk.value.trim()});save();projectForm.reset();newPhotoList=[];refreshThumbs();closeAdd();switchPage('library');toastMsg('项目已添加')}
+    let voteSelected=[];
+    function openVote(){voteSelected=[];document.getElementById('voteSearch').value='';renderVotePick();renderVoteCards();document.getElementById('voteLink').value=location.href;document.getElementById('votePreview').style.display='none';voteModal.classList.add('show')}
+    function closeVote(){voteModal.classList.remove('show')} voteModal.onclick=e=>{if(e.target.id==='voteModal')closeVote()};
+    function renderVotePick(){const q=(document.getElementById('voteSearch').value||'').trim().toLowerCase();const list=projects.filter(p=>!q||(p.name||'').toLowerCase().includes(q));document.getElementById('votePickList').innerHTML=list.map(p=>`<div class="v-item ${voteSelected.includes(p.id)?'on':''}" onclick="toggleVote(${p.id})"><img src="${p.image||''}" onerror="this.style.display='none'"><div><div class="vi-name">${p.name}</div><div class="vi-meta">${p.type||''} · ${p.budget||'费用待定'}</div></div>${voteSelected.includes(p.id)?'<span class="vi-tick">✓</span>':''}</div>`).join('')}
+    function toggleVote(id){voteSelected=voteSelected.includes(id)?voteSelected.filter(x=>x!==id):[...voteSelected,id];renderVotePick();renderVoteCards()}
+    function renderVoteCards(){const items=projects.filter(p=>voteSelected.includes(p.id));document.getElementById('voteCards').innerHTML=items.map(p=>{const cover=p.image?`<img src="${p.image}">`:`<div style="height:100%;display:grid;place-items:center;background:linear-gradient(135deg,#eef2ff,#f0fdff);font-size:40px">${p.icon||'✨'}</div>`;return `<div class="v-card"><button class="vc-rm" onclick="toggleVote(${p.id})" title="移除">×</button><div class="vc-cover">${cover}</div><div class="vc-body"><h4>${p.name}</h4><div class="mini" style="min-height:0">${p.desc||''}</div><div class="vc-grid"><span><b>类型</b> ${p.type||'—'}</span><span><b>费用</b> ${p.budget||'待定'}</span><span><b>人数</b> ${p.people||'—'}</span><span><b>评分</b> ★${p.rating||'暂无'}</span><span><b>地点</b> ${p.location||'待补充'}</span><span><b>时长</b> ${p.duration||'待补充'}</span><span><b>餐饮</b> ${p.catering||'待补充'}</span><span><b>额外费用</b> ${p.extraFee||'无'}</span><span><b>风险提示</b> ${p.risk||'待补充'}</span></div></div></div>`}).join('')||'<div class="empty">还没有选择项目，请从上方团建库中添加</div>'}
+    function voteText(){const items=projects.filter(p=>voteSelected.includes(p.id));if(!items.length)return '';const link=buildVoteLink();let t=`【团建投票】团队的小伙伴们，来选一个我们最想去的团建项目吧！👇\n`;items.forEach((p,i)=>{t+=`\n${i+1}. ${p.name}｜${p.type||''}｜${p.budget||'费用待定'}｜${p.people||''}｜★${p.rating||'暂无'}\n　${p.desc||''}\n`});if(link)t+=`\n🔗 点击查看项目详情：${link}`;return t}
+    function voteCardPayload(){const items=projects.filter(p=>voteSelected.includes(p.id));const link=buildVoteLink();let content='请选出你最想参加的团建项目：\n';items.forEach(function(p,i){content+='**'+(i+1)+'. '+p.name+'**｜'+(p.type||'')+'｜'+(p.budget||'费用待定')+'｜'+(p.people||'')+'\n'+(p.desc||'')+'\n'});const elements=[{tag:'div',text:{tag:'lark_md',content:content}}];if(link){elements.push({tag:'action',actions:[{tag:'button',text:{tag:'plain_text',content:'🔗 查看项目详情'},type:'primary',url:link}]})}return {msg_type:'interactive',card:{header:{title:{tag:'plain_text',content:'🗳️ 团建投票'},template:'blue'},elements:elements}}}
+    function sendVote(){const items=projects.filter(p=>voteSelected.includes(p.id));if(!items.length){toastMsg('请至少选择一个项目');return}const _vl=document.getElementById('voteLink').value.trim()||location.href;if(/^file:/i.test(_vl)){toastMsg('⚠️ 链接是本机 file:// 路径，飞书群里点击无反应：请先把网页部署上线，再把 http/https 地址填入上方链接框');return}const wh=document.getElementById('voteWebhook').value.trim();const preview=document.getElementById('votePreview');preview.style.display='block';preview.textContent=voteText();if(!wh){toastMsg('请填写飞书群机器人 Webhook，或点击“复制投票内容”手动发送');return}fetch(wh,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(voteCardPayload())}).then(r=>{if(r.ok){toastMsg('✅ 投票已发送到飞书群');return}r.text().then(t=>toastMsg('发送失败：'+t.slice(0,60)))}).catch(()=>toastMsg('发送失败（可能受浏览器跨域限制）：请点击“复制投票内容”手动粘贴到飞书群'))}
+    function copyVote(){const t=voteText();if(!t){toastMsg('请至少选择一个项目');return}const _vl=document.getElementById('voteLink').value.trim()||location.href;if(/^file:/i.test(_vl)){toastMsg('⚠️ 当前详情链接是本机 file:// 路径，飞书群里点击无反应：建议先部署网页并用 http/https 地址');}const done=()=>toastMsg('投票内容已复制，去飞书群粘贴即可');if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done).catch(()=>{fallbackCopy(t);done()})}else{fallbackCopy(t);done()}}
+    function voteOptionsText(){const items=projects.filter(p=>voteSelected.includes(p.id));if(!items.length)return '';return items.map(p=>p.name).join('\n')}
+    function copyVoteOptions(){const t=voteOptionsText();if(!t){toastMsg('请至少选择一个项目');return}const done=()=>toastMsg('已复制为投票选项：去飞书群点「+ 投票」→粘贴选项→发布即可');if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done).catch(()=>{fallbackCopy(t);done()})}else{fallbackCopy(t);done()}}
+    function fallbackCopy(t){const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}
+    function buildVoteLink(){const base=document.getElementById('voteLink').value.trim()||location.href;const ids=voteSelected.join(',');return base+(base.indexOf('?')>-1?'&':'?')+'vote='+encodeURIComponent(ids)}
+    function openVotePreview(ids){const arr=(ids||'').split(',').map(s=>s.trim()).filter(Boolean);const items=arr.length?projects.filter(p=>arr.indexOf(String(p.id))>-1):projects.filter(p=>voteSelected.indexOf(p.id)>-1);const grid=document.getElementById('votePreviewGrid');if(!items.length){grid.innerHTML='<div class="v-hint" style="grid-column:1/-1;text-align:center;padding:40px">未找到对应项目数据：当前浏览器没有加载这些团建项目，请先打开网页在团建库中加载。</div>';document.getElementById('votePreviewModal').classList.add('show');return}grid.innerHTML=items.map(p=>'<div class="vp-card"><div class="vp-cover">'+(p.image?'<img src="'+p.image+'" onerror="this.style.display=\'none\'">':'<div class="vp-noimg">🏞️</div>')+'</div><div class="vp-body"><h4>'+(p.icon||'✨')+' '+p.name+'</h4><div class="vp-meta">'+(p.type||'')+'｜'+(p.budget||'费用待定')+'｜'+(p.people||'')+'｜★'+(p.rating||'')+'</div><div class="vp-desc">'+(p.desc||'')+'</div><div class="vp-sub">📍'+(p.location||'待定')+'｜⏱ '+(p.duration||'待定')+'｜🍽 '+(p.catering||'待定')+'</div></div></div>').join('');document.getElementById('votePreviewModal').classList.add('show')}
+    function closeVotePreview(){document.getElementById('votePreviewModal').classList.remove('show')}
+    render();
+    (function(){var q=location.search||'';var m=q.match(/[?&]vote=([^&]*)/);if(m){var ids=decodeURIComponent(m[1]);setTimeout(function(){openVotePreview(ids)},300)}})();
+  </script>
+</body>
+</html>
